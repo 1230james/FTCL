@@ -46,5 +46,6 @@ bot.on("ready", function() {
 // =====================================================================================================================
 
 // Initialization
-bot.login(botConfig.auth);
-initAllChannels();
+bot.login(botConfig.auth).then(function() {
+    initAllChannels();
+});
