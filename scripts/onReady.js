@@ -1,3 +1,5 @@
+const fs = require("fs");
+
 module.exports = function(bot) { // as of 2020-08-11, this is largely recycled code
     let gameName;
     var rng = Math.random();
@@ -7,15 +9,14 @@ module.exports = function(bot) { // as of 2020-08-11, this is largely recycled c
     if (rng <= 0.5) gameName = 'Microsoft Flight Simulator X'
     if (rng < 0.3) gameName  = 'Microsoft Flight Simulator 2004'
     if (rng < 0.1) gameName  = 'Microsoft Flight'
-    botStatus.game.type = 1
     bot.user.setPresence({
         status: "online",
         activity: {
             type: "PLAYING",
-            name: 
+            name: gameName
         }
     }).catch(console.log); //Set status and send a message to the console once the bot is ready
-        
+    /*    
     var avlist = [ // List of file paths to avatar
         __dirname + "/../avatar1.png"
     ]
@@ -23,7 +24,7 @@ module.exports = function(bot) { // as of 2020-08-11, this is largely recycled c
     bot.user.setAvatar(fs.readFileSync(__dirname + avatar), function(err) {
         if (err) throw err;
     });
-    
+    */
     console.log(`Full steam!`);
-    log('Current avatar: ' + avatar);
+    // console.log('Current avatar: ' + avatar);
 }
