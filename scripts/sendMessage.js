@@ -21,7 +21,7 @@ module.exports = function(message, endChannel) {
     embed.url = getInvite(message.guild.id);
     
     // Color
-    embed.color = message.member.highestRole.hexColor;
+    embed.color = message.member.displayHexColor;
     
     // Attachments
     let attachments = message.attachments;
