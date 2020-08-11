@@ -1,5 +1,8 @@
 # Bot Config
 **/config.json
 
+# Server Invites
+**/guildInvites.json
+
 # Temp Files
 **/*~
