@@ -8,10 +8,10 @@ function getInvite(guildID) {
 }
 
 function getName(member) {
-    if (member.name == member.displayName) {
+    if (member.user.username == member.displayName) {
         return member.displayName;
     }
-    return member.displayName + " (" + member.name + ")";
+    return member.displayName + " (" + member.user.username + ")";
 }
 
 module.exports = function(message, endChannel) {
@@ -19,12 +19,12 @@ module.exports = function(message, endChannel) {
 
     // Author
     embed.author = {};
-    embed.author.name = message.member.displayName;
+    embed.author.name = getName(message.member);
     embed.author.icon_url = "https://cdn.discordapp.com/avatars/" + message.author.id + "/"
         + message.author.avatar + ".png";
 
     // Title
-    embed.title = getName(message.member);
+    embed.title = message.guild.name;
     embed.url = getInvite(message.guild.id);
     
     // Color
