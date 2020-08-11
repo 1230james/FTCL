@@ -48,29 +48,22 @@ module.exports = function(message, endChannel) {
         if (urlLC.endsWith("jpg") || urlLC.endsWith("png") || urlLC.endsWith("gif")) {
             embed.image = {};
             embed.image.url = attachments.first().url;
-        } else if (urlLC.endsWith("mp4") || urlLC.endsWith("webm") || urlLC.endsWith("wmv")) {
+        } /* else if (urlLC.endsWith("mp4") || urlLC.endsWith("webm") || urlLC.endsWith("wmv")) {
             embed.video = {};
             embed.video.url = attachments.first().url;
-        }
+        } */ // video is read-only, but maybe some day... :(
     }
 
     // Embeds
-    // This will overwrite the embeds for attached files; this is intended.
+    // This will overwrite the embed for attached files; this is intended.
+    // Yes I'm also aware this will pick the last image out of a set of multiple ones.
     message.embeds.forEach(function(e) {
-        switch(e.type) {
-        case "image":
+        if (e.type == "image") {
             embed.image = {};
             embed.image.url = e.image.url;
-            break;
-        case "video":
-            embed.video = {};
-            embed.video.url = e.video.url;
-            break;
-        default:
-            if (e.thumbnail != undefined) {
-                embed.image = {};
-                embed.image.url = e.thumbnail.url;
-            }
+        } else if (e.thumbnail != undefined) {
+            embed.image = {};
+            embed.image.url = e.thumbnail.url;
         }
     });
     
