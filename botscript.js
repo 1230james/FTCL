@@ -44,5 +44,5 @@ bot.on("ready", onReady);
 // =====================================================================================================================
 
 // Initialization
-bot.login(config.auth);
+bot.login(botConfig.auth);
 initAllChannels();

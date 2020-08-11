@@ -1,4 +1,4 @@
-const guildInvites = require("./guildInvites.json");
+const guildInvites = require(__dirname + "/../guildInvites.json");
 
 function getInvite(guildID) {
     if (guildInvites[guildID] != undefined) {
@@ -34,7 +34,7 @@ module.exports = function(message, endChannel) {
         embed.fields = [];
         embed.fields[0] = {
             "name":  "Attachments",
-            "value": str;
+            "value": str
         };
 
         let urlLC = attachments.first().url.toLowerCase(); // this section is really retarded but I cba
@@ -72,7 +72,7 @@ module.exports = function(message, endChannel) {
 
     // Footer
     embed.footer = {
-        "text": "Author User ID: " + message.author.id;
+        "text": "Author User ID: " + message.author.id
     };
     
     // Finalize & send
