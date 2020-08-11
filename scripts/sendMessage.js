@@ -2,7 +2,7 @@ const guildInvites = require(__dirname + "/../guildInvites.json");
 
 function getInvite(guildID) {
     if (guildInvites[guildID] != undefined) {
-        return guildInvited[guildID];
+        return guildInvites[guildID];
     }
     return null;
 }
