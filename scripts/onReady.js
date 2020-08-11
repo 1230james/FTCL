@@ -1,17 +1,20 @@
 module.exports = function(bot) { // as of 2020-08-11, this is largely recycled code
-    var botStatus = {} // Used for setting the bot's status and online/offline state, etc.
-    botStatus.status = 'online'
-    botStatus.game = {}
-    
+    let gameName;
     var rng = Math.random();
-    if (rng > 0.9) botStatus.game.name = 'Microsoft Train Simulator' // Fun little RNG easter egg thing
-    if (rng <= 0.9) botStatus.game.name = 'Trainz Railroad Simulator 12'
-    if (rng < 0.7) botStatus.game.name = 'Train Simulator 2017'
-    if (rng <= 0.5) botStatus.game.name = 'Microsoft Flight Simulator X'
-    if (rng < 0.3) botStatus.game.name = 'Microsoft Flight Simulator 2004'
-    if (rng < 0.1) botStatus.game.name = 'Microsoft Flight'
+    if (rng > 0.9) gameName  = 'Microsoft Train Simulator' // Fun little RNG easter egg thing
+    if (rng <= 0.9) gameName = 'Trainz Railroad Simulator 12'
+    if (rng < 0.7) gameName  = 'Train Simulator 2017'
+    if (rng <= 0.5) gameName = 'Microsoft Flight Simulator X'
+    if (rng < 0.3) gameName  = 'Microsoft Flight Simulator 2004'
+    if (rng < 0.1) gameName  = 'Microsoft Flight'
     botStatus.game.type = 1
-    bot.user.setPresence(botStatus).catch(log); //Set status and send a message to the console once the bot is ready
+    bot.user.setPresence({
+        status: "online",
+        activity: {
+            type: "PLAYING",
+            name: 
+        }
+    }).catch(console.log); //Set status and send a message to the console once the bot is ready
         
     var avlist = [ // List of file paths to avatar
         __dirname + "/../avatar1.png"
