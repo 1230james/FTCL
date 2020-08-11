@@ -10,6 +10,7 @@ const bot     = new Discord.Client();
 
 var channels  = {};
 
+const onReady     = require("./scripts/onReady.js");
 const getChannels = require("./scripts/getChannels.js");
 const sendMessage = require("./scripts/sendMessage.js");
 
@@ -37,6 +38,8 @@ function initAllChannels() {
         });
     });
 }
+
+bot.on("ready", onReady);
 
 // =====================================================================================================================
 
