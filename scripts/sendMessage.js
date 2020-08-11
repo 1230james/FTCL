@@ -7,6 +7,13 @@ function getInvite(guildID) {
     return null;
 }
 
+function getName(member) {
+    if (member.name == member.displayName) {
+        return member.displayName;
+    }
+    return member.displayName + " (" + member.name + ")";
+}
+
 module.exports = function(message, endChannel) {
     let embed = {};
 
@@ -17,7 +24,7 @@ module.exports = function(message, endChannel) {
         + message.author.avatar + ".png";
 
     // Title
-    embed.title = message.guild.name;
+    embed.title = getName(message.member);
     embed.url = getInvite(message.guild.id);
     
     // Color
