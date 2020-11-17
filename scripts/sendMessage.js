@@ -79,5 +79,7 @@ module.exports = function(message, endChannel) {
     let msgOptions = {
         "embed": embed
     };
-    endChannel.send("", msgOptions);
+    endChannel.send("", msgOptions).then(function() {
+        message.react("✅");
+    });
 }
